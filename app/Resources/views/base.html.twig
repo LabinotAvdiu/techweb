@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+
+    {% stylesheets 'AppBundle/Ressources/public/css/*'  %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+
+</head>
+<body>
+    <div class="container-fluid">
+
+        <!-- Second navbar for profile settings -->
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse-4">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/project">Project</a></li>
+                        <li><a href="/category">Category</a></li>
+                        <li><a href="/tache">Tache</a></li>
+                        <li><a href="/soustache">sousTache</a></li>
+                        <li>
+                            <a class="btn btn-default btn-outline btn-circle collapsed"  data-toggle="collapse" href="/profile/edit" aria-expanded="false" aria-controls="nav-collapse4">Profile <i class=""></i> </a>
+                        </li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container -->
+        </nav><!-- /.navbar -->
+    </div><!-- /.container-fluid -->
+
+
+    <div class="container">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    </div>
+
+
+    <script type="text/javascript" href="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}" >
+    </script>
+    <script type="text/javascript" href="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}" >
+    </script>
+    {% block javascripts %}{% endblock %}
+
+</body>
 </html>

@@ -27,6 +27,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         $context = $this->context;
         $request = $this->request;
 
+        // _assetic_a781465
+        if ($pathinfo === '/css/a781465.css') {
+            return array (  '_controller' => 'assetic.controller:render',  'name' => 'a781465',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_a781465',);
+        }
+
         if (0 === strpos($pathinfo, '/_')) {
             // _wdt
             if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
