@@ -3,18 +3,18 @@
 {% block body %}
     <h1>Tache</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ tache.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ tache.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+
+        {% for soustache in tache.soustache %}
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{ soustache.name }}
+                <a href="{{ path('soustache_show', { 'id': soustache.id }) }}" class="pull-right"> | show | </a>
+                <a href="{{ path('soustache_edit', { 'id': soustache.id }) }}" class="pull-right"> | edit | </a>
+            </li>
+        </ul>
+
+        {% endfor %}
 
     <ul>
         <li>

@@ -50,6 +50,11 @@
     </script>
     <script type="text/javascript" href="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}" >
     </script>
+
+    {% javascripts '@AppBundle/Ressources/public/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
     {% block javascripts %}{% endblock %}
 
 </body>

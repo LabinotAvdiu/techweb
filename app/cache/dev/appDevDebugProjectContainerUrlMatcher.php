@@ -32,6 +32,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'assetic.controller:render',  'name' => 'a781465',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_a781465',);
         }
 
+        if (0 === strpos($pathinfo, '/js/acfc801')) {
+            // _assetic_acfc801
+            if ($pathinfo === '/js/acfc801.js') {
+                return array (  '_controller' => 'assetic.controller:render',  'name' => 'acfc801',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_acfc801',);
+            }
+
+            // _assetic_acfc801_0
+            if ($pathinfo === '/js/acfc801_part_1_main_1.js') {
+                return array (  '_controller' => 'assetic.controller:render',  'name' => 'acfc801',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_acfc801_0',);
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/_')) {
             // _wdt
             if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {

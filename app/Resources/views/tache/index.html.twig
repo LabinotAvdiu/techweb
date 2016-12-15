@@ -1,24 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1>Taches list</h1>
 
-<h1>Liste des taches</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tache in taches %}
+            <tr>
+                <td><a href="{{ path('tache_show', { 'id': tache.id }) }}">{{ tache.id }}</a></td>
+                <td>{{ tache.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tache_show', { 'id': tache.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-{% for tache in taches %}
-
-<ul class="list-group">
-    <li class="list-group-item">
-        {{ tache.name }}
-        <a href="{{ path('tache_show', { 'id': tache.id }) }}" class="pull-right"> | show | </a>
-        <a href="{{ path('tache_edit', { 'id': tache.id }) }}" class="pull-right"> | edit | </a>
-    </li>
-</ul>
-
-{% endfor %}
-
-<ul>
-    <li>
-        <a href="{{ path('tache_new') }}">Create a new tache</a>
-    </li>
-</ul>
+    <ul>
+        <li>
+            <a href="{{ path('tache_new') }}">Create a new tache</a>
+        </li>
+    </ul>
 {% endblock %}
