@@ -1,14 +1,24 @@
-$("li.ajax").click(function(){
 
-url = this.data
+$(document).ready(function(){
 
-  $.ajax({
-    url: "test.html",
-    context: document.body
-  }).done(function() {
-    $( this ).addClass( "done" );
-  });
 
+
+  console.log("[ ok ]");
+  $(".ajax").click(function(){
+
+    url =this.dataset.url;
+    console.log(url);
+    $.ajax({
+      method: "GET", // GET ou POST comme tu veut
+      url: url, // La page qui va faire le traitement
+      success : function(resultat){
+        console.log(resultat);
+        $('#myModal').modal('toggle');
+
+        $("#content-modal").html(resultat);
+      }
+    })
+  })
 
 
 })
