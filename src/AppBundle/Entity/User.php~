@@ -23,7 +23,7 @@ class User extends BaseUser
 
        /**
      * Many Groups have Many Users.
-     * @ManyToMany(targetEntity="AppBundle\Entity\Project", mappedBy="user")
+     * @ManyToMany(targetEntity="AppBundle\Entity\Project", mappedBy="user" , cascade={"persist","remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $project;

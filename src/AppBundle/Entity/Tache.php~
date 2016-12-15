@@ -41,7 +41,7 @@ class Tache
     private $sousTache;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="tache")
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="tache")
     * 
     */
     private $user;

@@ -41,7 +41,7 @@ class Tache
     private $sousTache;
 
     /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="tache")
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="tache")
     * 
     */
     private $user;
@@ -168,5 +168,29 @@ class Tache
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Tache
+     */
+    public function addUser(\AppBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
     }
 }
