@@ -47,8 +47,8 @@ class SousTacheController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($sousTache);
             $em->flush($sousTache);
-
-            return $this->redirectToRoute('soustache_show', array('id' => $sousTache->getId()));
+        $referer = $this->getRequest()->headers->get('referer');
+        return $this->redirect($referer);
         }
 
         return $this->render('soustache/new.html.twig', array(
@@ -88,7 +88,8 @@ class SousTacheController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('soustache_edit', array('id' => $sousTache->getId()));
+         $referer = $this->getRequest()->headers->get('referer');
+        return $this->redirect($referer);
         }
 
         return $this->render('soustache/edit.html.twig', array(
@@ -132,5 +133,21 @@ class SousTacheController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Dellete with ajax
+     *
+     * @Route("/{id}/delete", name="delete_soustache")
+     * @Method({"GET", "POST"})
+     */
+    public function removeAction(SousTache $sousTache)
+    {
+      
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($sousTache);
+        $em->flush();
+        $referer = $this->getRequest()->headers->get('referer');
+        return $this->redirect($referer);
     }
 }

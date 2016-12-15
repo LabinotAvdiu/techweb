@@ -48,7 +48,8 @@ class TacheController extends Controller
             $em->persist($tache);
             $em->flush($tache);
 
-            return $this->redirectToRoute('tache_show', array('id' => $tache->getId()));
+                    $referer = $this->getRequest()->headers->get('referer');
+        return $this->redirect($referer);
         }
 
         return $this->render('tache/new.html.twig', array(
@@ -88,7 +89,8 @@ class TacheController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('tache_edit', array('id' => $tache->getId()));
+                    $referer = $this->getRequest()->headers->get('referer');
+        return $this->redirect($referer);
         }
 
         return $this->render('tache/edit.html.twig', array(

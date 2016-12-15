@@ -90,7 +90,8 @@ class ProjectController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('project_edit', array('id' => $project->getId()));
+                    $referer = $this->getRequest()->headers->get('referer');
+        return $this->redirect($referer);
         }
 
         return $this->render('project/edit.html.twig', array(
