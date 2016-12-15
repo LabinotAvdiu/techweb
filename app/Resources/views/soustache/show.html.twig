@@ -26,6 +26,7 @@
         </li>
         <li>
             <a href="{{ path('soustache_edit', { 'id': sousTache.id }) }}">Edit</a>
+            <a href="{{ path('delete_soustache', { 'id': sousTache.id }) }}">Delete</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
