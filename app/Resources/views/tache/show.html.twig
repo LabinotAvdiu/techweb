@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tache</h1>
-
-
         {% for soustache in tache.soustache %}
 
         <ul class="list-group">
@@ -12,17 +9,14 @@
                 <a href="{{ path('soustache_show', { 'id': soustache.id }) }}" class="pull-right"> | show | </a>
                 <a href="{{ path('soustache_edit', { 'id': soustache.id }) }}" class="pull-right"> | edit | </a>
             </li>
+            <li class="list-group-item">
+                <a href="{{ path('soustache_new') }}">Create a new sousTache</a>
+            </li>
         </ul>
 
         {% endfor %}
 
     <ul>
-        <li>
-            <a href="{{ path('tache_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('tache_edit', { 'id': tache.id }) }}">Edit</a>
-        </li>
         <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
