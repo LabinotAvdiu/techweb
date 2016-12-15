@@ -6,15 +6,12 @@
         <ul class="list-group">
             <li class="list-group-item">
                 {{ soustache.name }}
-                <a href="{{ path('soustache_show', { 'id': soustache.id }) }}" class="pull-right"> | show | </a>
                 <a href="{{ path('soustache_edit', { 'id': soustache.id }) }}" class="pull-right"> | edit | </a>
-            </li>
-            <li class="list-group-item">
-                <a href="{{ path('soustache_new') }}">Create a new sousTache</a>
             </li>
         </ul>
 
         {% endfor %}
+        <a href="{{ path('soustache_new') }}">Create a new sousTache</a>
 
     <ul>
         <li>
