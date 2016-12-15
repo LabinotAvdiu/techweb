@@ -1,23 +1,27 @@
 {% extends 'base.html.twig' %}
 
+
+
+
+
 {% block body %}
-        {% for soustache in tache.soustache %}
+{% for soustache in tache.soustache %}
 
-        <ul class="list-group">
-            <li class="list-group-item">
-                {{ soustache.name }}
-                <a href="{{ path('soustache_edit', { 'id': soustache.id }) }}" class="pull-right"> | edit | </a>
-            </li>
-        </ul>
+<ul class="list-group">
+    <li class="list-group-item">
+        {{ soustache.name }}
+        <a href="{{ path('soustache_edit', { 'id': soustache.id }) }}" class="pull-right"> | edit | </a>
+    </li>
+</ul>
 
-        {% endfor %}
-        <a href="{{ path('soustache_new') }}">Create a new sousTache</a>
+{% endfor %}
+<a href="{{ path('soustache_new') }}">Create a new sousTache</a>
 
-    <ul>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+<ul>
+    <li>
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+    </li>
+</ul>
 {% endblock %}

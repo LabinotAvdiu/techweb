@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block body %}
 <h1>Projects list</h1>
 
         {% for project in User.project %}
 
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item ">
                 {{ project.name }}
-                <a href="{{ path('project_show', { 'id': project.id }) }}" class="pull-right"> | show | </a>
+                <a href="{{ path('project_show', { 'id': project.id }) }}" class="pull-right "> | show | </a>
                 <a href="{{ path('project_edit', { 'id': project.id }) }}" class="pull-right"> | edit | </a>
             </li>
         </ul>

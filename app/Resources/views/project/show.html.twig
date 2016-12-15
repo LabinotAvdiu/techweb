@@ -1,5 +1,14 @@
 {% extends 'base.html.twig' %}
 
+
+{% block javascripts %}
+{% javascripts '@AppBundle/Ressources/public/js/*' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+
+
+
 {% block body %}
 
 
@@ -21,13 +30,13 @@
                                 {% for soustache in tache.soustache %}
                                     {% if(soustache.done == "1") %}
                                       {% set done = done + 1 %}
-                                    
+
                                     {% endif %}
                                  {% endfor %}
-                            <a href="{{ path('tache_show', { 'id': tache.id }) }}" class="pull-right"> | show | </a>
+                            <a href="{{ path('tache_show', { 'id': tache.id }) }}" class="pull-right ajax"> | show | </a>
                             <a href="{{ path('tache_edit', { 'id': tache.id }) }}" class="pull-right"> | edit | </a>
                                  <div class="pull-right">
-                                     
+
                                   {% if(done != 0) %}
                                      {{ (done/total )*100 }}%
                                     {% else %}
