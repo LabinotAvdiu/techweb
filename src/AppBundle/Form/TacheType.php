@@ -10,23 +10,24 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class TacheType extends AbstractType
 {
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')
-        ->add('category', EntityType::class, [
+             ->add('category', EntityType::class, [
             'class'         => 'AppBundle:Category',
             'choice_label'  => 'name',
             "attr"     => [
                 "class"=>"form-control"
             ]
-        ]);
+        ])
+        ->add('user')        ;
     }
-
+    
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -35,8 +36,8 @@ class TacheType extends AbstractType
     }
 
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function getBlockPrefix()
     {
         return 'appbundle_tache';

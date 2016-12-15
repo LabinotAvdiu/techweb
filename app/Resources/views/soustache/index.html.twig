@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Done</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('soustache_show', { 'id': sousTache.id }) }}">{{ sousTache.id }}</a></td>
                 <td>{{ sousTache.name }}</td>
+                <td>{% if sousTache.done %}Yes{% else %}No{% endif %}</td>
                 <td>
                     <ul>
                         <li>

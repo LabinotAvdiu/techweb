@@ -1,32 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Project</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ project.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ project.name }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('project_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('project_edit', { 'id': project.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {% for category in project.category %}
+
+        <ul class="list-group">
+            <li class="list-group-item">
+                {{ category.name }}
+                <a href="{{ path('category_edit', { 'id': category.id }) }}" class="pull-right"> | edit | </a>
+                   {% for tache in category.tache %}
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            {{ tache.name }}
+
+                              {% set total = tache.soustache|length %}
+                              {% set done = 0 %}
+
+                                {% for soustache in tache.soustache %}
+                                    {% if(soustache.done == "1") %}
+                                      {% set done = done + 1 %}
+                                    
+                                    {% endif %}
+                                 {% endfor %}
+                            <a href="{{ path('tache_show', { 'id': tache.id }) }}" class="pull-right"> | show | </a>
+                            <a href="{{ path('tache_edit', { 'id': tache.id }) }}" class="pull-right"> | edit | </a>
+                                 <div class="pull-right">
+                                     
+                                  {% if(done != 0) %}
+                                     {{ (done/total )*100 }}%
+                                    {% else %}
+                                    0%
+                                    {% endif %}
+                                 </div>
+
+                        </li>
+                    </ul>
+                    {% endfor %}
+            </li>
+        </ul>
+
+        {% endfor %}
+
+<ul>
+    <li>
+        <a href="{{ path('category_new') }}">Create a new category</a>
+    </li>
+
+    <li>
+        <a href="{{ path('tache_new') }}">Create a new tache</a>
+    </li>
+</ul>
+
 {% endblock %}

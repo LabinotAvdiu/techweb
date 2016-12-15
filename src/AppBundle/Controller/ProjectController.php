@@ -27,11 +27,9 @@ class ProjectController extends Controller
         $id = $this->getUser()->getId();
         $projects = $em->getRepository('AppBundle:Project')->findAll();
         $User = $em->getRepository('AppBundle:User')->findOneBy(["id" => $id]);
-dump($User->getProject()[0]);
 
-die();
         return $this->render('project/index.html.twig', array(
-            'projects' => $projects,
+            'User' => $User,
         ));
     }
 

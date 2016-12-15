@@ -10,23 +10,23 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class SousTacheType extends AbstractType
 {
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')
-        ->add('tache', EntityType::class, [
+        $builder->add('name')->add('done')
+             ->add('tache', EntityType::class, [
             'class'         => 'AppBundle:Tache',
             'choice_label'  => 'name',
             "attr"     => [
                 "class"=>"form-control"
             ]
-        ]);
+        ]);    ;
     }
-
+    
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -35,8 +35,8 @@ class SousTacheType extends AbstractType
     }
 
     /**
-    * {@inheritdoc}
-    */
+     * {@inheritdoc}
+     */
     public function getBlockPrefix()
     {
         return 'appbundle_soustache';

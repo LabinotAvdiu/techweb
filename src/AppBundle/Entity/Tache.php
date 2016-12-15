@@ -41,14 +41,23 @@ class Tache
     private $sousTache;
 
     /**
-    * @ORM\OneToMany(targetEntity="AppBundle\Entity\User", mappedBy="id")
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="tache")
+    * 
     */
     private $user;
-    
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sousTache = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -102,13 +111,6 @@ class Tache
     {
         return $this->category;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sousTache = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add sousTache
@@ -145,33 +147,23 @@ class Tache
     }
 
     /**
-     * Add user
+     * Set user
      *
      * @param \AppBundle\Entity\User $user
      *
      * @return Tache
      */
-    public function addUser(\AppBundle\Entity\User $user)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
-        $this->user[] = $user;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Remove user
-     *
-     * @param \AppBundle\Entity\User $user
-     */
-    public function removeUser(\AppBundle\Entity\User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
      * Get user
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \AppBundle\Entity\User
      */
     public function getUser()
     {

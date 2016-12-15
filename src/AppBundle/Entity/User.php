@@ -30,6 +30,11 @@ class User extends BaseUser
 
 
     
+    /**
+    * @ORM\OneToMany(targetEntity="AppBundle\Entity\Tache", mappedBy="user", cascade={"persist","remove"})
+    */     
+    private $tache;
+
 
     /**
      * Add project
@@ -63,5 +68,39 @@ class User extends BaseUser
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Add tache
+     *
+     * @param \AppBundle\Entity\Tache $tache
+     *
+     * @return User
+     */
+    public function addTache(\AppBundle\Entity\Tache $tache)
+    {
+        $this->tache[] = $tache;
+
+        return $this;
+    }
+
+    /**
+     * Remove tache
+     *
+     * @param \AppBundle\Entity\Tache $tache
+     */
+    public function removeTache(\AppBundle\Entity\Tache $tache)
+    {
+        $this->tache->removeElement($tache);
+    }
+
+    /**
+     * Get tache
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTache()
+    {
+        return $this->tache;
     }
 }
